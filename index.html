@@ -22,11 +22,40 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<!--manual carousel-->
+	<style>
+		.carousel-container {
+		  width: 100%;
+		  position: relative;
+		  overflow: hidden;
+		}
+		.carousel-slide {
+		  display: flex;
+		  transition: transform 0.5s ease-in-out;
+		}
+		.carousel-slide img {
+		  width: 100%;
+		  border: 0;
+		}
+		.prev, .next {
+		  position: absolute;
+		  top: 50%;
+		  transform: translateY(-50%);
+		  background-color: rgba(0,0,0,0.5);
+		  color: white;
+		  padding: 10px;
+		  cursor: pointer;
+		}
+		.prev {
+		  left: 10px;
+		}
+		.next {
+		  right: 10px;
+		}
+	</style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -158,11 +187,11 @@
 					<!--<h1 class="display-1 font-secondary mt-n3 mb-md-4">2 de mayo 2025</h1>-->
 					<div id="countdown" class="font-secondary display-5 mt-n3 mb-md-4">
 						<div style="display: inline-block; text-align: center; margin-right: 10px;">
-							<div id="days" style="font-size: 2em;">00</div>
+							<div id="days" style="font-size: 2em; !important">00</div>
 							<div>días</div>
 						</div>
 						<div style="display: inline-block; text-align: center; margin-right: 10px;">
-							<div id="hours" style="font-size: 2em;">00</div>
+							<div id="hours" style="font-size: 2em; !important">00</div>
 							<div>horas</div>
 						</div>
 						<div style="display: inline-block; text-align: center; margin-right: 10px;">
@@ -216,8 +245,20 @@
 			-->
 			<div class="row">
 				<div class="col-md-12 text-center mb-4">
+				
+				
+				
+					<div class="carousel-container">
+					  <div class="carousel-slide">
+						<img class="img-fluid mb-4" src="img/invernaderoRia.jpg" alt="Image 1">
+						<img class="img-fluid mb-4" src="img/invernaderoRia.jpg" alt="Image 2">
+						<img class="img-fluid mb-4" src="img/invernaderoRia.jpg" alt="Image 3">
+					  </div>
+					  <!--<button class="prev" onclick="moveSlide(-1)">L</button>-->
+					  <!--<button class="next" onclick="moveSlide(1)">R</button>-->
+					</div>
 
-					<!-- -->
+					<!--
 					<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
 					  <div class="carousel-inner">
 						<div class="carousel-item active">
@@ -239,7 +280,7 @@
 						<span class="visually-hidden">Next</span>
 					  </button>
 					</div>
-					<!-- -->
+					-->
 				
 					<!--<img class="img-fluid mb-4" src="img/invernaderoRia.jpg" alt="">-->
 					<!--<h4 class="mb-3">El invernadero del pazo de santa cruz</h4>-->
@@ -848,9 +889,42 @@
 			}
 		}, 1000);
 	</script>
+	
+	<!--manual carousel-->
+	<script>
+	  let currentSlide = 0;
+	  const slideContainer = document.querySelector('.carousel-slide');
+	  const totalSlides = document.querySelectorAll('.carousel-slide img').length;
+
+	  function moveSlide(direction) {
+		currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+		slideContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+	  }
+
+	  // Touch events for swipe functionality
+	  let touchStartX = 0;
+	  let touchEndX = 0;
+
+	  const carousel = document.getElementById('carousel');
+
+	  carousel.addEventListener('touchstart', function(e) {
+		touchStartX = e.changedTouches[0].screenX;
+	  });
+
+	  carousel.addEventListener('touchend', function(e) {
+		touchEndX = e.changedTouches[0].screenX;
+		handleGesture();
+	  });
+
+	  function handleGesture() {
+		if (touchEndX < touchStartX) moveSlide(1); // Swipe left, next slide
+		if (touchEndX > touchStartX) moveSlide(-1); // Swipe right, previous slide
+	  }
+	</script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+	
 </body>
 
 </html>
