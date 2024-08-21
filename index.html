@@ -22,8 +22,11 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -213,7 +216,32 @@
 			-->
 			<div class="row">
 				<div class="col-md-12 text-center mb-4">
-					<img class="img-fluid mb-4" src="img/invernaderoRia.jpg" alt="">
+
+					<!-- -->
+					<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+					  <div class="carousel-inner">
+						<div class="carousel-item active">
+						  <img src="img/invernaderoRia.jpg" class="img-fluid mb-4" alt="...">
+						</div>
+						<div class="carousel-item">
+						  <img src="img/invernaderoRia.jpg" class="img-fluid mb-4" alt="...">
+						</div>
+						<div class="carousel-item">
+						  <img src="img/invernaderoRia.jpg" class="img-fluid mb-4" alt="...">
+						</div>
+					  </div>
+					  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					  </button>
+					  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					  </button>
+					</div>
+					<!-- -->
+				
+					<!--<img class="img-fluid mb-4" src="img/invernaderoRia.jpg" alt="">-->
 					<!--<h4 class="mb-3">El invernadero del pazo de santa cruz</h4>-->
 					<p class="mb-2">Rua do Pazo s/n · Bueu – Pontevedra · 36939 – Galicia, España.</p>
 					<p class="mb-6">13:00PM</p>
